@@ -413,7 +413,7 @@ nav.side-navbar span.heading {
 }
 
 nav.side-navbar ul {
-  padding: 15px 0;
+  padding: 15px 0px 480px;
 }
 
 nav.side-navbar ul a {
@@ -425,7 +425,7 @@ nav.side-navbar ul a {
 }
 
 nav.side-navbar ul a:hover {
-  background: #796AEE;
+  background: #0099ce;
   border-left: 4px solid #3b25e6;
   color: #fff;
 }
@@ -435,7 +435,7 @@ nav.side-navbar ul li.active a {
 }
 
 nav.side-navbar ul li.active a:hover {
-  background: #796AEE;
+  background: #0099ce;
 }
 
 nav.side-navbar ul ul {
