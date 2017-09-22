@@ -16,4 +16,5 @@ Route::get('/register', 'PagesController@register');
 Route::get('/dashboard', 'PagesController@dashboard');
 Route::post('/login', 'LoginController@signin')->name('signin');
 Route::post('/signup', 'LoginController@signup')->name('signup');
+Route::get('/dashboard/{id}/courses', 'LoginController@getcourses');
 Route::get('test', 'ProductController@test');

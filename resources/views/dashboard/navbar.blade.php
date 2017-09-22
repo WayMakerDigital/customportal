@@ -1,5 +1,3 @@
-@extends('master')
-@section('content')
  <div class="page home-page">
       <!-- Main Navbar-->
       <header class="header">
@@ -16,8 +14,9 @@
               <!-- Navbar Header-->
               <div class="navbar-header">
                 <!-- Navbar Brand --><a href="index.html" class="navbar-brand">
-                  <div class="brand-text brand-big hidden-lg-down"><img src= "{!! asset('assets/img/way-makerlearning-logo-1.png') !!}"></div>
+                 <div class="brand-text brand-big hidden-lg-down"><img src= "{!! asset('assets/img/way-makerlearning-logo-1.png') !!}"></div> 
                   <div class="brand-text brand-small"><strong>WL</strong></div></a>
+                   <!-- Toggle Button--><a id="toggle-btn" href="#" class="menu-btn active"><span></span><span></span><span></span></a>
               </div>
               <!-- Navbar Menu -->
               <ul class="nav-menu list-unstyled d-flex flex-md-row align-items-md-center">
@@ -38,24 +37,4 @@
               <h1 class="h4">Welcome</h1>
             </div>
           </div>
-          <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
-          <ul class="list-unstyled">
-            <li class="active"> <a href=""><i class="icon-home"></i>Home</a></li>
-            <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Account Settings</a>
-              <ul id="dashvariants" class="collapse list-unstyled">
-                <li><a href="#">Shipping</a></li>
-                <li><a href="#">Billing</a></li>
-                <li><a href="#">Courses</a></li>
-              </ul>
-            </li>
-            
-
-        </nav>
-        <div class="content-inner">
-          <!-- Page Header-->
-          <header class="page-header">
-            <div class="container-fluid">
-              <h2 class="no-margin-bottom">Dashboard</h2>
-            </div>
-          </header>
-@endsection
+          <!-- Sidebar Navidation Menus-->

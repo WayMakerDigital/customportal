@@ -22,14 +22,11 @@
                   <form action="{!! route('signin') !!}" id="login-form" method="post">
                   {{csrf_field()}}
                     <div class="form-group">
-                      <input id="login-username" type="text" name="username" required="" class="input-material">
-                      <label for="login-username" class="label-material">User Name</label>
+                      <input id="login-username" type="text" name="username" placeholder="Username" class="input-material" required>
                     </div>
                     <div class="form-group">
-                      <input id="login-password" type="password" name="password" required="" class="input-material">
-                      <label for="login-password" class="label-material">Password</label>
+                      <input id="login-password" type="password" name="password" placeholder="Password" class="input-material" required>
                     </div><input id="login" type="submit" value="Login" class="btn btn-primary">
-                    <!-- This should be submit button but I replaced it with <a> for demo purposes-->
                   </form><a href="#" class="forgot-pass">Forgot Password?</a><br><small>Do not have an account? </small><a href="/register" class="signup">Signup</a>
                 </div>
               </div>

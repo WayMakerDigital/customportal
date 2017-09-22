@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Woocommerce;
+use Automattic\WooCommerce\HttpClient\HttpClientException;
 
 class LoginController extends Controller
 {
@@ -49,6 +50,26 @@ class LoginController extends Controller
     	'password' => $request->input('password')         
   ];
 
-   return Woocommerce::get('customers', $data);
-    }
+   $results = Woocommerce::post('customers/authenticate', $data);
+
+  return view('dashboard.index', compact('results'));
+       
+     }
+     public function getcourses(Request $request, $id)
+     {
+        
+         $result = Woocommerce::get('customers/'.$id.'/orders');
+            dd($result);
+         return $result;
+     }
+
+     
+     public function test()
+    {
+    $result = Woocommerce::get('customers/count');
+   
+     return $result;
+  
+
+   }
 }
