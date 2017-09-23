@@ -62,7 +62,14 @@ class LoginController extends Controller
             dd($result);
          return $result;
      }
+    
+    public function getcustomerdetails(Request $request, $id)
+    {
+      $results = Woocommerce::get('customers/'.$id.'/');
+      //	dd($result);
 
+      return view('dashboard.records', compact('results'));
+    }
      
      public function test()
     {

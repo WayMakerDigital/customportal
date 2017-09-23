@@ -9,6 +9,7 @@
             <li class="active"> <a href=""><i class="icon-home"></i>Home</a></li>
             <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Account Settings</a>
               <ul id="dashvariants" class="collapse list-unstyled">
+                <li><a href="/dashboard/{{$result['id']}}/details">Records</a></li>
                 <li><a href="#">Shipping</a></li>
                 <li><a href="#">Billing</a></li>
                 <li><a href="/dashboard/{{$result['id']}}/courses">Courses</a></li>
