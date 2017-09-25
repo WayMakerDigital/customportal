@@ -1,10 +1,10 @@
 @extends('master')
 @include('dashboard.navbar')
 @section('content')
- @foreach($results as $result)
+@foreach($results as $result)
    <span class="heading">Main</span>
           <ul class="list-unstyled">
-            <li class="active"> <a href=""><i class="icon-home"></i>Home</a></li>
+            <li class="active"> <a href="/dashboard/{{$result['id']}}"><i class="icon-home"></i>Dashboard</a></li>
             <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Account Settings</a>
               <ul id="dashvariants" class="collapse list-unstyled">
                 <li><a href="/dashboard/{{$result['id']}}/details">Records</a></li>
@@ -31,41 +31,49 @@
                <div class="col-lg-12">
                   <div class="card">
                     <div class="card-close">
-                      <div class="dropdown">
-                        <button type="button" id="closeCard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-toggle"><i class="fa fa-ellipsis-v"></i></button>
-                        <div aria-labelledby="closeCard" class="dropdown-menu has-shadow"><a href="#" class="dropdown-item remove"> <i class="fa fa-times"></i>Close</a><a href="#" class="dropdown-item edit"> <i class="fa fa-gear"></i>Edit</a></div>
-                      </div>
-                    </div>
+                     </div>
                     <div class="card-header d-flex align-items-center">
-                      <h3 class="h4">All form elements</h3>
+                      <h3 class="h4">Details</h3>
                     </div>
                     <div class="card-body">
-                      <form class="form-horizontal">
+                      <form class="form-horizontal" action="/dashboard/{{$result['id']}}/details" method="post">
+                       {{csrf_field()}}
+                       {{method_field('PUT')}}
+
+                     @foreach ($errors->all() as $error)
+                    <p class="alert alert-danger">{{ $error }}</p>
+                    @endforeach
+
+                   @if (session('status'))
+                    <div class="alert alert-success">
+                        {{ session('status') }}
+                    </div>
+                   @endif
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">First Name</label>
                           <div class="col-sm-9">
-                            <input type="text" value="{{$result['first_name']}}" class="form-control">
+                         <input type="text" name="firstname" value="{{$result['first_name']}}" class="form-control">
                           </div>
                         </div>
                         <div class="line"></div>
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">Last Name</label>
                           <div class="col-sm-9">
-                            <input type="text" value="{{$result['last_name']}}" class="form-control">
+                            <input type="text" name="lastname" value="{{$result['last_name']}}" class="form-control">
                           </div>
                         </div>
                         <div class="line"></div>
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">Username</label>
                           <div class="col-sm-9">
-                            <input type="text" value="{{$result['username']}}" name="password" class="form-control">
+                            <input type="text" name="username" value="{{$result['username']}}" name="password" class="form-control">
                           </div>
                         </div>
                         <div class="line"></div>
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">Email</label>
                           <div class="col-sm-9">
-                            <input type="text" value="{{$result['email']}}" name="password" class="form-control">
+                            <input type="text" name="email" value="{{$result['email']}}" name="password" class="form-control">
                           </div>
                         </div>
                         <div class="form-group row">

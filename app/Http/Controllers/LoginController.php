@@ -34,11 +34,11 @@ class LoginController extends Controller
            'country'=>$request->country
         ]
     ];
-    $result = Woocommerce::post('customers', $data);
-       if(!$result){
+    $results = Woocommerce::post('customers', $data);
+       if(!$results){
        	return redirect()->intended('/register')->with('status', 'Invalid Username or password');
         } else {
-        	return redirect()->intended('dashboard');
+        	return view('dashboard.index', compact('results'));
         }
 
     }
@@ -55,7 +55,7 @@ class LoginController extends Controller
   return view('dashboard.index', compact('results'));
        
      }
-     public function getcourses(Request $request, $id)
+     public function getCourses(Request $request, $id)
      {
         
          $result = Woocommerce::get('customers/'.$id.'/orders');
@@ -63,12 +63,32 @@ class LoginController extends Controller
          return $result;
      }
     
-    public function getcustomerdetails(Request $request, $id)
+    public function getCustomerDetails(Request $request, $id)
     {
       $results = Woocommerce::get('customers/'.$id.'/');
       //	dd($result);
 
       return view('dashboard.records', compact('results'));
+    }
+
+    public function updateCustomerDetails(Request $request, $id)
+    {
+    	$data = [
+        'first_name' =>$request->firstname,
+        'last_name' =>$request->lastname,
+        'username' =>$request->username,
+        'email' => $request->email,
+        ];
+       
+       $result = Woocommerce::put('customers/'.$id.'/', $data);
+
+       return redirect()->route('update', $id)->with('status', 'Your record has been been updated successfully');
+    }
+    public function getDashboard(Request $request, $id)
+    {
+       $results= Woocommerce::get('customers/'.$id.'/');
+
+       return view('dashboard.home', compact('results'));
     }
      
      public function test()
