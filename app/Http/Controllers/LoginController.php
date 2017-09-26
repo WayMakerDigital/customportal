@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Woocommerce;
-use Automattic\WooCommerce\HttpClient\HttpClientException;
+//use Automattic\WooCommerce\HttpClient\HttpClientException;
 
 class LoginController extends Controller
 {
@@ -52,23 +52,29 @@ class LoginController extends Controller
 
    $results = Woocommerce::post('customers/authenticate', $data);
 
-  return view('dashboard.index', compact('results'));
-       
+   if(!results){
+   	 echo "not working";
+   }else{
+   return view('dashboard.index', compact('results'));
+   };
      }
      public function getCourses(Request $request, $id)
      {
         
          $result = Woocommerce::get('customers/'.$id.'/orders');
-            dd($result);
-         return $result;
+           // dd($result);
+        // return $result;
      }
     
     public function getCustomerDetails(Request $request, $id)
     {
       $results = Woocommerce::get('customers/'.$id.'/');
-      //	dd($result);
+     
+      $customer = $results['customer'];
 
-      return view('dashboard.records', compact('results'));
+       //dd($customer);
+
+      return view('dashboard.records', compact('customer'));
     }
 
     public function updateCustomerDetails(Request $request, $id)
@@ -86,11 +92,24 @@ class LoginController extends Controller
     }
     public function getDashboard(Request $request, $id)
     {
-       $results= Woocommerce::get('customers/'.$id.'/');
+       $results = Woocommerce::get('customers/'.$id.'/');
 
-       return view('dashboard.home', compact('results'));
+        $customer = $results['customer'];
+        //dd($customer);
+       	return view('dashboard.home', compact('customer'));
     }
      
+    public function getShippingDetails(Request $request, $id)
+    {
+    	$results = Woocommerce::get('customers/'.$id.'/');
+
+    	$customer = $results['customer'];
+
+    	return view('dashboard.shipping', compact('customer'));
+
+
+    }
+
      public function test()
     {
     $result = Woocommerce::get('customers/count');

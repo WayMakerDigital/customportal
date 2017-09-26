@@ -1,16 +1,14 @@
 @extends('master')
 @include('dashboard.navbar')
 @section('content')
-@foreach($results as $result)
    <span class="heading">Main</span>
           <ul class="list-unstyled">
-            <li class="active"> <a href="/dashboard/{{$result['id']}}"><i class="icon-home"></i>Dashboard</a></li>
+            <li class="active"> <a href="/dashboard/{{$customer['id']}}"><i class="icon-home"></i>Dashboard</a></li>
             <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Account Settings</a>
               <ul id="dashvariants" class="collapse list-unstyled">
-                <li><a href="/dashboard/{{$result['id']}}/details">Records</a></li>
-                <li><a href="#">Shipping</a></li>
-                <li><a href="#">Billing</a></li>
-                <li><a href="/dashboard/{{$result['id']}}/courses">Courses</a></li>
+                <li><a href="/dashboard/{{$customer['id']}}/details">Records</a></li>
+                <li><a href="/dashboard/{{$customer['id']}}/shipping">Shipping</a></li>
+                <li><a href="/dashboard/{{$customer['id']}}/courses">Courses</a></li>
               </ul>
             </li>
         </nav>
@@ -36,7 +34,7 @@
                       <h3 class="h4">Details</h3>
                     </div>
                     <div class="card-body">
-                      <form class="form-horizontal" action="/dashboard/{{$result['id']}}/details" method="post">
+                      <form class="form-horizontal" action="/dashboard/{{$customer['id']}}/details" method="post">
                        {{csrf_field()}}
                        {{method_field('PUT')}}
 
@@ -52,28 +50,28 @@
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">First Name</label>
                           <div class="col-sm-9">
-                         <input type="text" name="firstname" value="{{$result['first_name']}}" class="form-control">
+                         <input type="text" name="firstname" value="{{$customer['first_name']}}" class="form-control">
                           </div>
                         </div>
                         <div class="line"></div>
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">Last Name</label>
                           <div class="col-sm-9">
-                            <input type="text" name="lastname" value="{{$result['last_name']}}" class="form-control">
+                            <input type="text" name="lastname" value="{{$customer['last_name']}}" class="form-control">
                           </div>
                         </div>
                         <div class="line"></div>
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">Username</label>
                           <div class="col-sm-9">
-                            <input type="text" name="username" value="{{$result['username']}}" name="password" class="form-control">
+                            <input type="text" name="username" value="{{$customer['username']}}" name="password" class="form-control">
                           </div>
                         </div>
                         <div class="line"></div>
                         <div class="form-group row">
                           <label class="col-sm-3 form-control-label">Email</label>
                           <div class="col-sm-9">
-                            <input type="text" name="email" value="{{$result['email']}}" name="password" class="form-control">
+                            <input type="text" name="email" value="{{$customer['email']}}" name="password" class="form-control">
                           </div>
                         </div>
                         <div class="form-group row">
@@ -89,7 +87,5 @@
                         </div>
                         </section>
                         </div>
-                        </ul>
-
-@endforeach                      
+                        </ul>                      
 @endsection

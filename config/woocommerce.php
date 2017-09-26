@@ -48,7 +48,7 @@ return [
     | Force Basic Authentication as query string
     |--------------------------------------------------------------------------
     */
-    'query_string_auth' => env('WOOCOMMERCE_WP_QUERY_STRING_AUTH', false),
+    'query_string_auth' => env('WOOCOMMERCE_WP_QUERY_STRING_AUTH', true),
 
     /*
     |--------------------------------------------------------------------------

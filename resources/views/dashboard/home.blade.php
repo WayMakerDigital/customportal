@@ -3,16 +3,14 @@
 @section('content')
 
  <!-- Dashboard Counts Section-->
-   @foreach($results as $result)
     <span class="heading">Main</span>
           <ul class="list-unstyled">
-            <li class="active"> <a href="/dashboard/{{$result['id']}}"><i class="icon-home"></i>Dashboard</a></li>
+            <li class="active"> <a href="{{$customer['id'] }}"><i class="icon-home"></i>Dashboard</a></li>
             <li><a href="#dashvariants" aria-expanded="false" data-toggle="collapse"> <i class="icon-interface-windows"></i>Account Settings</a>
               <ul id="dashvariants" class="collapse list-unstyled">
-                <li><a href="/dashboard/{{$result['id']}}/details">Records</a></li>
-                <li><a href="#">Shipping</a></li>
-                <li><a href="#">Billing</a></li>
-                <li><a href="/dashboard/{{$result['id']}}/courses">Courses</a></li>
+                <li><a href="/dashboard/{{$customer['id']}}/details">Records</a></li>
+                <li><a href="/dashboard/{{$customer['id']}}/shipping">Shipping</a></li>
+                <li><a href="">Courses</a></li>
               </ul>
             </li>
 
@@ -36,7 +34,7 @@
                         <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-violet"></div>
                       </div>
                     </div>
-                    <div class="number">{{$result['first_name']}}</div>
+                    <div class="number">{{$customer['first_name']}}</div>
                   </div>
                 </div>
                 <!-- Item -->
@@ -48,7 +46,7 @@
                         <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-red"></div>
                       </div>
                     </div>
-                    <div class="number">{{$result['last_name']}}</div>
+                    <div class="number">{{$customer['last_name']}}</div>
                   </div>
                 </div>
                 <!-- Item -->
@@ -60,7 +58,7 @@
                         <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-green"></div>
                       </div>
                     </div>
-                    <div class="number">{{$result['username']}}</div>
+                    <div class="number">{{$customer['username']}}</div>
                   </div>
                 </div>
                 <!-- Item -->
@@ -72,7 +70,7 @@
                         <div role="progressbar" style="width: 25%; height: 4px;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100" class="progress-bar bg-orange"></div>
                       </div>
                     </div>
-                    <div class="number">{{$result['orders_count']}}</div>
+                    <div class="number">{{$customer['orders_count']}}</div>
                   </div>
                 </div>
               </div>
@@ -119,7 +117,6 @@
                     </div>
                   </div>
                 </div>
-          @endforeach
  @endsection
 
 

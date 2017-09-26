@@ -17,6 +17,7 @@ Route::get('/register', 'PagesController@register');
 Route::post('/dashboard', 'LoginController@signin')->name('signin');
 Route::post('/signup', 'LoginController@signup')->name('signup');
 Route::get('/dashboard/{id}/courses', 'LoginController@getCourses');
+Route::get('/dashboard/{id}/shipping', 'LoginController@getShippingDetails');
 Route::get('dashboard/{id}', 'LoginController@getDashboard');
 Route::get('/dashboard/{id}/details', 'LoginController@getCustomerDetails');
 Route::put('/dashboard/{id}/details', 'LoginController@updateCustomerDetails')->name('update');
